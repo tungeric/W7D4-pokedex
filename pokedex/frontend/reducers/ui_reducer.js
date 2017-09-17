@@ -2,6 +2,7 @@ import { RECEIVE_ONE_POKEMON } from '../actions/pokemon_actions';
 import { merge } from 'lodash';
 
 const _defaultState = {
+  pokeDisplay: null,
   errors: {},
   loading: {}
 };
@@ -11,7 +12,7 @@ const uiReducer = (state = _defaultState, action) => {
   switch(action.type) {
     case RECEIVE_ONE_POKEMON:
      let newState = merge({}, state);
-     newState.pokeDisplay = action.pokemon.id;
+     newState.pokeDisplay = action.payload.pokemon.id;
      return newState;
     default:
       return state;

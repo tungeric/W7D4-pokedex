@@ -6,12 +6,14 @@ import configureStore from './store/store';
 
 import PokemonIndexContainer from './components/pokemon/pokemon_index_container';
 
+
 //phase 4
 import { HashRouter, Route } from 'react-router-dom';
 
 //test
 import * as APIUtil from './util/api_util';
-import { receiveOnePokemon } from './actions/pokemon_actions';
+import { createPokemon, receiveNewPokemon } from './actions/pokemon_actions';
+import { selectAllPokemon } from './reducers/selectors';
 
 const Root = ({store}) => (
   <Provider store = {store}>
@@ -19,6 +21,7 @@ const Root = ({store}) => (
       <div>
         <h1>I wanna be the very best</h1>
         <Route path="/" component={PokemonIndexContainer} />
+
       </div>
     </HashRouter>
   </Provider>
@@ -33,10 +36,9 @@ document.addEventListener('DOMContentLoaded',() => {
   // test
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchOnePokemon = APIUtil.fetchOnePokemon;
-  window.receiveOnePokemon = receiveOnePokemon;
-  // window.selectAllPokemon = selectAllPokemon;
-  // window.requestAllPokemon = requestAllPokemon;
+  window.createPokemon = createPokemon;
+  window.receiveNewPokemon = receiveNewPokemon;
+
   // window.receiveAllPokemon = receiveAllPokemon;
   // window.fetchAllPokemon = APIUtil.fetchAllPokemon;
   // window.getState = store.getState;
